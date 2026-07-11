@@ -4,7 +4,8 @@ import './index.css'
 import App from './App'
 import store from './app/store'
 import { Provider } from 'react-redux'
-import { fetchUsers } from './features/users/usersSlice'
+//import { apiSlice } from './api/apiSlice'
+import { extendedApiSlice } from './features/users/usersSlice'
 
 import { worker } from './api/server'
 
@@ -13,7 +14,8 @@ async function start() {
   // Start our mock API server
   await worker.start({ onUnhandledRequest: 'bypass' })
 
-  store.dispatch(fetchUsers())
+  //store.dispatch(apiSlice.endpoints.getUsers.initiate())
+  store.dispatch(extendedApiSlice.endpoints.getUsers.initiate())
 
   ReactDOM.render(
     <React.StrictMode>
